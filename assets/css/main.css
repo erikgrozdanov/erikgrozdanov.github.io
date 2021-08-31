@@ -2,11 +2,3 @@
     padding: 0;
     margin: 0;
 }
-
-html, body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1F2428;
-    color: #D1D5DA;
-}
