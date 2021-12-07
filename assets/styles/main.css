@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+}
+html, body{
+    height: 100%;
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Open Sans', sans-serif;
+}
+.container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Glassmorphism card effect */
+.card {
+    position: relative;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    width: 466px;
+    height: 401.9px;
+}
+
+.holder{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 30px;
+    width: 190px;
+    height: 190px;
+    border-radius: 100%;
+    border: dashed 2px rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.holder img{
+    border-radius: 100%;
+}
+
+.full-name{
+    color: #fff;
+    position: absolute;
+    font-weight: 600;
+    font-size: 18px;
+    bottom: 110px;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+}
+
+#title{
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.social button{
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    outline: none;
+    border: none;
+    font-size: 23px;
+    color: #fff;
+    margin: 5px;
+    transition: all .3s ease;
+}
+.social button:hover{
+    cursor: pointer;
+    background-color: #fff !important;
+    color: #000;
+}
+.social{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 30px;
+}
+
+#fb{
+    background-color: #2374E1;
+}
+
+#gh{
+    background-color: #010101;
+}
+
+#in{
+    background-color: #0A66C2;
+}
+
+@media only screen and (max-width: 600px) {
+    .card{
+        width: calc(100% - 50px);
+    }
+  }
+  
