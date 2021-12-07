@@ -81,9 +81,9 @@ html, body{
 }
 .social{
     position: absolute;
-    left: 50%;
-    transform: translate(-50%);
     bottom: 30px;
+    width: 100%;
+    text-align: center;
 }
 
 #fb{
