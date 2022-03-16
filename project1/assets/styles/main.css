@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --btnColor: #d6fce9;
+    --btnText: #389265;
+    --btnDisabled: #f0f0f0;
+    --btnDisabledText:#c2c2c2;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+#number {
+    padding: .7rem 1.9rem;
+    text-align: center;
+    font-size: 16px;
+}
+
+#incBtn {
+    margin-left: -7.1rem;
+}
+
+#decBtn {
+    margin-left: 2.25rem;
+}
+
+#incBtn,
+#decBtn {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 4px;
+    border: none;
+    background-color: var(--btnColor);
+    color: var(--btnText);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#incBtn:hover,
+#decBtn:hover {
+    cursor: pointer;
+}
+
+#incBtn:disabled,
+#decBtn:disabled {
+    background-color: var(--btnDisabled);
+    color: var(--btnDisabledText);
+}
