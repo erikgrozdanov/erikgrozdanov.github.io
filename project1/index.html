@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
         integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <title>JS - First attempt</title>
@@ -11,81 +12,150 @@
     <link rel="stylesheet" href="assets/styles/main.css">
 
 </head>
+<div class="product">
+    <img src="https://i.imgur.com/uWteCty.gif" height="145" alt="">
+    <p class="productName">Segway Ninebot Kickscooter E25E električni skiro, črn</p>
+    <p class="quantity"><span id="quantity"></span><span id="stock"></span> na zalogi</p>
+    <input type="number" onfocusout="testThis();" id="number" value="1" min="1">
+    <button type="button" onclick="IncValue()" id="incBtn">+</button>
+    <button type="button" onclick="DecValue()" id="decBtn" disabled>-</button>
+    <p class="price"><strong><span id="price" value="0.00"></span>€</strong></p>   
+</div>
 
-<body>
-    <div class="container">
-        <p><span id="sum">12</span> Available</p>
-        <strong>1.22€</strong>
-        <br>
-        <input type="number" onfocusout="testThis();" id="number" value="1" min="1" max="12">
-        <button type="button" onclick="IncValue(); incPrice()" id="incBtn">+</button>
-        <button type="button" onclick="DecValue(); decPrice()" id="decBtn"
-            disabled>-</button>
-    </div>
-    <p>Price: <strong><span id="price" value="0.00">1.22</span>€</strong></p>
-    </div>
-    </div>
+<script>
+    /* Product parameters*/
+    var price = 2.98;
+    var Quantity = 32;
 
-    <!-- SCRIPT -->
-    <script>
-        function IncValue() {
-            var sum = parseInt(document.getElementById('sum').innerHTML);
-            var value = parseInt(document.getElementById('number').value);
-            if (value < 12) {
-                value++;
+    const numInputs = document.querySelectorAll('input[type=number]')
+
+    numInputs.forEach(function (input) {
+        input.addEventListener('change', function (e) {
+            if (e.target.value == '') {
+                e.target.value = 1
             }
+        })
+    })
+    document.getElementById("quantity").innerHTML = Quantity;
+    if (Quantity == 1) {
+        document.getElementById("stock").innerHTML = " kos";
+    }
 
-            if (value > 1) {
-                var samplebutton = document.getElementById("decBtn");
-                samplebutton.disabled = false;
-            }
+    if (Quantity == 2) {
+        document.getElementById("stock").innerHTML = " kosa";
+    }
 
-            if (value == 12) {
-                var samplebutton = document.getElementById("incBtn");
-                samplebutton.disabled = true;
-            } else {
-                var samplebutton = document.getElementById("incBtn");
-                samplebutton.disabled = false;
-            }
+    if (Quantity > 2 && Quantity < 5) {
+        document.getElementById("stock").innerHTML = " kosi";
+    }
 
-            var fullPrice = parseFloat(price * value);
-            document.getElementById('price').innerHTML = fullPrice.toFixed(2);
-            document.getElementById('number').value = value;
-            if (value < sum) {
-                var samplebutton = document.getElementById("incBtn");
-                samplebutton.disabled = false;
-            }
+    if (Quantity >= 5) {
+        document.getElementById("stock").innerHTML = " kosov";
+    }
+
+    if (Quantity > 100) {
+        var QuantityStr = Quantity + "";
+        if (QuantityStr.endsWith("01")) {
+            document.getElementById("stock").innerHTML = " kos";
         }
 
-        function DecValue() {
-            var sum = parseInt(document.getElementById('sum').innerHTML);
-            var value = parseInt(document.getElementById('number').value);
-            if (value > 1) {
-                value--;
-            }
-
-            if (value == 1) {
-                var samplebutton = document.getElementById("decBtn");
-                samplebutton.disabled = true;
-            }
-
-            var fullPrice = parseFloat(price * value);
-            document.getElementById('price').innerHTML = fullPrice.toFixed(2);
-            document.getElementById('number').value = value;
-            if (value < sum) {
-                var samplebutton = document.getElementById("incBtn");
-                samplebutton.disabled = false;
-            }
+        if (QuantityStr.endsWith("02")) {
+            document.getElementById("stock").innerHTML = " kosa";
         }
 
-        function testThis() {
-            var el = document.getElementById("number");
-            var temp;
-            /* Product */
-            var price = 1.22;
-            var Quantiy = 12;
-            if (document.getElementById('number').value > Quantiy) {
-                document.getElementById('number').value = Quantiy;
+        if (QuantityStr.endsWith("03") || QuantityStr.endsWith("04")) {
+            document.getElementById("stock").innerHTML = " kosi";
+        }
+    }
+
+    document.getElementById("price").innerHTML = price.toFixed(2);
+    var quantity = parseInt(document.getElementById('quantity').innerHTML);
+    var value = parseInt(document.getElementById('number').value);
+
+    function IncValue() {
+        var quantity = parseInt(document.getElementById('quantity').innerHTML);
+        var value = parseInt(document.getElementById('number').value);
+        if (value < Quantity) {
+            value++;
+        }
+
+        if (value > 1) {
+            var samplebutton = document.getElementById("decBtn");
+            samplebutton.disabled = false;
+        }
+
+        if (value == Quantity) {
+            var samplebutton = document.getElementById("incBtn");
+            samplebutton.disabled = true;
+        } else {
+            var samplebutton = document.getElementById("incBtn");
+            samplebutton.disabled = false;
+        }
+
+        var fullPrice = parseFloat(price * value);
+        document.getElementById('price').innerHTML = fullPrice.toFixed(2);
+        document.getElementById('number').value = value;
+        if (value < quantity) {
+            var samplebutton = document.getElementById("incBtn");
+            samplebutton.disabled = false;
+        }
+    }
+
+    function DecValue() {
+        var quantity = parseInt(document.getElementById('quantity').innerHTML);
+        var value = parseInt(document.getElementById('number').value);
+        if (value > 1) {
+            value--;
+        }
+
+        if (value == 1) {
+            var samplebutton = document.getElementById("decBtn");
+            samplebutton.disabled = true;
+        }
+
+        var fullPrice = parseFloat(price * value);
+        document.getElementById('price').innerHTML = fullPrice.toFixed(2);
+        document.getElementById('number').value = value;
+        if (value < quantity) {
+            var samplebutton = document.getElementById("incBtn");
+            samplebutton.disabled = false;
+        }
+    }
+
+    function testThis() {
+        var el = document.getElementById("number");
+        var temp;
+        if (document.getElementById('number').value > Quantity) {
+            document.getElementById('number').value = Quantity;
+        }
+        temp = document.getElementById('number').value;
+        var fullPrice = parseFloat(price * temp);
+        if (fullPrice == 0.00) {
+            fullPrice = price;
+        }
+        document.getElementById('price').innerHTML = fullPrice.toFixed(2);
+        if (document.getElementById('number').value > 1) {
+            var samplebutton = document.getElementById("decBtn");
+            samplebutton.disabled = false;
+        }
+
+        if (document.getElementById('number').value == Quantity) {
+            var samplebutton = document.getElementById("incBtn");
+            samplebutton.disabled = true;
+        } else {
+            var samplebutton = document.getElementById("incBtn");
+            samplebutton.disabled = false;
+        }
+
+    }
+    var el = document.getElementById("number");
+    el.setAttribute("max", Quantity); // set a new value;
+    var temp;
+    el.addEventListener("keyup", function (event) {
+        if (event.key === "Enter" && (temp != document.getElementById('number').value && (document
+                .getElementById('number').value != 0))) {
+            if (document.getElementById('number').value > Quantity) {
+                document.getElementById('number').value = Quantity;
             }
             temp = document.getElementById('number').value;
             var fullPrice = parseFloat(price * temp);
@@ -94,57 +164,23 @@
                 var samplebutton = document.getElementById("decBtn");
                 samplebutton.disabled = false;
             }
-
-            if (document.getElementById('number').value == 12) {
+            if (document.getElementById('number').value == Quantity) {
                 var samplebutton = document.getElementById("incBtn");
                 samplebutton.disabled = true;
             } else {
                 var samplebutton = document.getElementById("incBtn");
                 samplebutton.disabled = false;
             }
-
         }
-
-
-
-        var el = document.getElementById("number");
-        var temp;
-
-        /* Product */
-        var price = 1.22;
-        var Quantiy = 12;
-
-        el.addEventListener("keyup", function (event) {
-            if (event.key === "Enter" && (temp != document.getElementById('number').value && (document
-                    .getElementById('number').value != 0))) {
-                if (document.getElementById('number').value > Quantiy) {
-                    document.getElementById('number').value = Quantiy;
-                }
-                temp = document.getElementById('number').value;
-                var fullPrice = parseFloat(price * temp);
-                document.getElementById('price').innerHTML = fullPrice.toFixed(2);
-                if (document.getElementById('number').value > 1) {
-                    var samplebutton = document.getElementById("decBtn");
-                    samplebutton.disabled = false;
-                }
-                if (document.getElementById('number').value == 12) {
-                    var samplebutton = document.getElementById("incBtn");
-                    samplebutton.disabled = true;
-                } else {
-                    var samplebutton = document.getElementById("incBtn");
-                    samplebutton.disabled = false;
-                }
-            }
-        });
-
-        $('#number').on('change keyup', function () {
-            // Remove invalid characters
-            var sanitized = $(this).val().replace(/[^0-9.]/g, '');
-            sanitized = sanitized.replace(/\.(?=.*\.)/, '');
-            // Update value
-            $(this).val(sanitized);
-        });
-    </script>
+    });
+    $('#number').on('change keyup', function () {
+        // Remove invalid characters
+        var sanitized = $(this).val().replace(/[^0-9.]/g, '');
+        sanitized = sanitized.replace(/\.(?=.*\.)/, '');
+        // Update value
+        $(this).val(sanitized);
+    });
+</script>
 </body>
 
 </html>
