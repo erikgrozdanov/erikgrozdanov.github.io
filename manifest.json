@@ -4,8 +4,8 @@
   "description": "Digitalna agencija NEXO web app.",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#f8fafc",
-  "theme_color": "#2563eb",
+  "background_color": "#F9FAFB",
+  "theme_color": "#002535",
   "icons": [
     {
       "src": "/favicon.svg",
