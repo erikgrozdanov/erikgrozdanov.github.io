@@ -1,0 +1,23 @@
+<svg width="800" height="560" viewBox="0 0 800 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="560" rx="36" fill="#EEF1F5"/>
+  <rect x="28" y="28" width="744" height="504" rx="28" fill="#FFFFFF"/>
+  <rect x="68" y="76" width="250" height="180" rx="24" fill="url(#hero)"/>
+  <rect x="352" y="76" width="380" height="24" rx="12" fill="#214156"/>
+  <rect x="352" y="122" width="294" height="14" rx="7" fill="#5F7280" opacity="0.55"/>
+  <rect x="352" y="151" width="338" height="14" rx="7" fill="#5F7280" opacity="0.4"/>
+  <rect x="352" y="180" width="180" height="34" rx="17" fill="#214156"/>
+  <rect x="68" y="300" width="664" height="164" rx="24" fill="#F7FAFC"/>
+  <rect x="96" y="332" width="204" height="12" rx="6" fill="#214156"/>
+  <rect x="96" y="364" width="268" height="12" rx="6" fill="#5F7280" opacity="0.55"/>
+  <rect x="96" y="396" width="230" height="12" rx="6" fill="#5F7280" opacity="0.35"/>
+  <rect x="556" y="328" width="140" height="108" rx="18" fill="#214156"/>
+  <path d="M169 116C134 159 116 197 107 241C161 257 220 257 274 241C257 184 231 144 169 116Z" fill="#214156"/>
+  <circle cx="621" cy="382" r="22" fill="#A9C5DB"/>
+  <path d="M609 382L618 391L636 373" stroke="#214156" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <defs>
+    <linearGradient id="hero" x1="90" y1="90" x2="286" y2="248" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DCE7EF"/>
+      <stop offset="1" stop-color="#A9C5DB"/>
+    </linearGradient>
+  </defs>
+</svg>
