@@ -27,6 +27,8 @@
       overflow: hidden;
       color: #fff;
       font-family: monospace;
+      user-select: none;
+      -webkit-user-select: none;
     }
 
     .wrap {
@@ -36,11 +38,12 @@
       transform: translateY(2vh);
     }
 
-    img {
+    video {
       display: block;
       height: 25vh;
       width: auto;
       max-width: 100%;
+      pointer-events: none;
     }
 
     p {
@@ -52,8 +55,29 @@
 </head>
 <body>
   <div class="wrap">
-    <img src="test.gif" alt="Centered GIF" />
+    <video id="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-label="Intro video">
+      <source src="video.mp4" type="video/mp4" />
+    </video>
     <p>Kmalu z vami!</p>
   </div>
+
+  <script>
+    const video = document.getElementById('hero-video');
+
+    if (video) {
+      video.muted = true;
+      video.defaultMuted = true;
+
+      const tryPlay = () => {
+        const promise = video.play();
+        if (promise && typeof promise.catch === 'function') {
+          promise.catch(() => {});
+        }
+      };
+
+      video.addEventListener('loadedmetadata', tryPlay, { once: true });
+      tryPlay();
+    }
+  </script>
 </body>
 </html>
